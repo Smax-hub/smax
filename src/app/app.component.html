@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      ol li {
+        list-style-type: none;
+        font-size: 1.5rem;
+        font-weight: 700;
+        justify-content: left;
+      }
+
+      .button-brisi {
+        border: none;
+        appearance: none;
+        outline: none;
+        background: none;
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 1rem;
+        background-color: red;
+        color: white;
+      }
+
+      .button-dodaj {
+        border: none;
+        appearance: none;
+        outline: none;
+        background: none;
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-radius: 0rem;
+        background-color: rgb(60, 255, 0);
+        color: white;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 2px solid black;
+      }
+
+      table {
+        margin: 0px;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Vpisi svoje zadatke za danas</h1>
+    <div class="container">
+      <section>
+        <input type="text" class="input-group" [(ngModel)]="todoInput" />
+        <button (click)="addTodo()" class="button-dodaj">Dodaj</button>
+      </section>
+      <ol class="list-group">
+        <li class="list-group-item" *ngFor="let todo of todoList$ | async">
+          <table border="0">
+            <tr>
+              <td class="vnos">
+                <span>{{ todo.title }}</span>
+              </td>
+              <td>
+                <button class="button-brisi" (click)="deleteTodo(todo.id)">
+                  Obrisi
+                </button>
+              </td>
+            </tr>
+          </table>
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>
